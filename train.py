@@ -65,7 +65,7 @@ parser.add_argument('--arch', type=str, default='deepv3.DeepWV3Plus',
                     help='Network architecture. We have DeepSRNX50V3PlusD (backbone: ResNeXt50) \
                     and deepWV3Plus (backbone: WideResNet38).')
 parser.add_argument('--dataset', type=str, default='cityscapes',
-                    help='cityscapes, mapillary, camvid, kitti')
+                    help='cityscapes, mapillary, camvid, kitti, forest')
 parser.add_argument('--dataset_inst', default=None,
                     help='placeholder for dataset instance')
 parser.add_argument('--num_workers', type=int, default=4,
