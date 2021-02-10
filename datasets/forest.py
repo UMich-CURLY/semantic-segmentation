@@ -63,7 +63,7 @@ def forest_cv_split(root, split, cv_split):
         all_items.append(os.path.join(img_path, it))
 
     if cv_split == 3:
-        logx.msg('cv split {} {} {}'.format(split, cv_split, all_cities))
+        logx.msg('cv split {} {} {}'.format(split, cv_split, all_items))
         return all_items
 
     num_total_images = len(all_items)
@@ -74,10 +74,10 @@ def forest_cv_split(root, split, cv_split):
     for j in range(num_total_images):
         if j >= offset and j < (offset + num_val_images):
             if split == 'val':
-                images.append(all_cities[j])
+                images.append(all_items[j])
         else:
             if split == 'train':
-                images.append(all_cities[j])
+                images.append(all_items[j])
 
     logx.msg('cv split {} {} {}'.format(split, cv_split, images))
     return images
@@ -143,7 +143,7 @@ class Loader(BaseLoader):
         items = []
 
         for it in images:
-            item = (os.path.join(img_path, it), os.path.join(mask_root, it))
+            item = (os.path.join(img_root, it), os.path.join(mask_root, it))
             items.append(item)
 
         logx.msg('mode {} found {} images'.format(self.mode, len(items)))
