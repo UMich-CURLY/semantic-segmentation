@@ -273,7 +273,6 @@ def build_centroids(imgs, num_classes, train, cv=None, coarse=False,
             with open(json_fn, 'r') as json_data:
                 centroids = json.load(json_data)
             centroids = {int(idx): centroids[idx] for idx in centroids}
-        
     return centroids
 
 
