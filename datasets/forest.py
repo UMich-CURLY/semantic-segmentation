@@ -97,7 +97,7 @@ class Loader(BaseLoader):
                                      label_transform=label_transform)
 
         ######################################################################
-        # Cityscapes-specific stuff:
+        # Forest-specific stuff:
         ######################################################################
         self.root = cfg.DATASET.FOREST_DIR
         self.id_to_trainid = forest_labels.label2trainid
@@ -143,7 +143,8 @@ class Loader(BaseLoader):
         items = []
 
         for it in images:
-            item = (os.path.join(img_root, it), os.path.join(mask_root, it))
+            head, tail = os.path.split(it)
+            item = (os.path.join(img_root, tail), os.path.join(mask_root, tail))
             items.append(item)
 
         logx.msg('mode {} found {} images'.format(self.mode, len(items)))
