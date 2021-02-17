@@ -101,9 +101,6 @@ def eval_minibatch(data, net, criterion, val_loss, calc_metrics, args, val_idx):
     # input    = torch.Size([1, 3, h, w])
     # gt_image = torch.Size([1, h, w])
     images, gt_image, img_names, scale_float = data
-    if cfg.DATASET.NAME == 'forest':
-        gt_image = gt_image[:,:,:,0]
-        gt_image = gt_image.squeeze(1)
     assert len(images.size()) == 4 and len(gt_image.size()) == 3
     assert images.size()[2:] == gt_image.size()[1:]
     batch_pixel_size = images.size(0) * images.size(2) * images.size(3)

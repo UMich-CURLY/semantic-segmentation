@@ -87,11 +87,6 @@ class RMILoss(nn.Module):
                 labels_4D 	:	[N, H, W], dtype=long
                 do_rmi          :       bool
         """
-        # Change labels_4D size from [N, H, W, 3] to [N, H, W]
-        if cfg.DATASET.NAME == 'forest':
-            labels_4D = labels_4D[:,:,:,0]
-            labels_4D = labels_4D.squeeze(1)
-
         # label mask -- [N, H, W, 1]
         label_mask_3D = labels_4D < self.num_classes
 
