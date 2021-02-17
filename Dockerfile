@@ -1,4 +1,5 @@
-FROM nvcr.io/nvidia/pytorch:19.10-py3
+#FROM nvcr.io/nvidia/pytorch:19.10-py3
+FROM nvcr.io/nvidia/pytorch:20.12-py3
 
 RUN pip install --no-cache-dir runx==0.0.6
 RUN pip install --no-cache-dir numpy
@@ -15,7 +16,8 @@ RUN pip install --no-cache-dir opencv-python
 RUN pip install --no-cache-dir nose
 RUN pip install --no-cache-dir ninja
 
-RUN apt-get update && apt-get install libgtk2.0-dev -y && rm -rf /var/lib/apt/lists/*
+RUN apt-get update && apt-get install sudo
+RUN DEBIAN_FRONTEND="noninteractive" apt-get install libgtk2.0-dev sudo -y && rm -rf /var/lib/apt/lists/*
 
 # Install Apex
 RUN cd /home/ && git clone https://github.com/NVIDIA/apex.git apex && cd apex && python setup.py install --cuda_ext --cpp_ext
