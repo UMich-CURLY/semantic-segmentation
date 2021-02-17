@@ -23,5 +23,6 @@ HPARAMS: [
    arch: ocrnet.HRNet_Mscale,
    result_dir: LOGDIR,
    RUNX.TAG: '{arch}',
+   class_uniform_tile: 480,
   },
 ]
