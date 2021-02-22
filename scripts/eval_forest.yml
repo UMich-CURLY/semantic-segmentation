@@ -1,0 +1,20 @@
+# Run Evaluation on Forest with a pretrained model
+
+CMD: "python -m torch.distributed.launch --nproc_per_node=1 train.py"
+
+HPARAMS: [
+  {
+   dataset: forest,
+   cv: 0,
+   syncbn: true,
+   apex: true,
+   fp16: true,
+   bs_val: 2,
+   eval: folder,
+   eval_folder: "ASSETS_PATH/dataset_forest/testing/images/",
+   n_scales: "0.5,1.0,2.0",
+   snapshot: "ASSETS_PATH/semantic-segmentation/logs/train_forest/ocrnet.HRNet_Mscale_space-kakapo_2021.02.18_16.01/last_checkpoint_ep50.pth",
+   arch: ocrnet.HRNet_Mscale,
+   result_dir: LOGDIR,
+  },
+]
