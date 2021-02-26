@@ -133,7 +133,7 @@ def eval_minibatch(data, net, criterion, val_loss, calc_metrics, args, val_idx):
 
                 # Expected Model outputs:
                 #   required:
-                #     'pred'  the network prediction, shape (1, 19, h, w)
+                #     'pred'  the network prediction, shape (1, num_classes, h, w)
                 #
                 #   optional:
                 #     'pred_*' - multi-scale predictions from mscale model

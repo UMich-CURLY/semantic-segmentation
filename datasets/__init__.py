@@ -143,6 +143,8 @@ def setup_loaders(args):
         val_name = 'train'
     elif args.eval == 'folder':
         val_name = 'folder'
+    elif args.eval == 'test':
+        val_name = 'test'
     else:
         raise 'unknown eval mode {}'.format(args.eval)
 

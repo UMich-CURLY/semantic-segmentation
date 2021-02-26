@@ -52,7 +52,11 @@ def forest_cv_split(root, split, cv_split):
 
     cv_split == 3 means use train + val
     """
-    img_dir_name = "training"
+    if split == 'test':
+      img_dir_name = "testing"
+    else:
+      img_dir_name = "training"
+    
     img_path = os.path.join(root, img_dir_name, 'images')
 
     all_items = []
@@ -62,7 +66,7 @@ def forest_cv_split(root, split, cv_split):
     for it in c_items:
         all_items.append(os.path.join(img_path, it))
 
-    if cv_split == 3:
+    if cv_split == 3 or split == 'test':
         logx.msg('cv split {} {} {}'.format(split, cv_split, all_items))
         return all_items
 
@@ -105,7 +109,10 @@ class Loader(BaseLoader):
         self.fill_colormap()
         img_ext = 'png'
         mask_ext = 'png'
-        img_dir_name = "training"
+        if mode == 'test':
+          img_dir_name = "testing"
+        else:
+          img_dir_name = "training"
 
         img_root = path.join(self.root, img_dir_name, 'images')
         mask_root = path.join(self.root, img_dir_name, 'labels_id')

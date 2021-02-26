@@ -193,7 +193,7 @@ parser.add_argument('--log_msinf_to_tb', action='store_true', default=False,
 
 parser.add_argument('--eval', type=str, default=None,
                     help=('just run evaluation, can be set to val or trn or '
-                          'folder'))
+                          'folder or test'))
 parser.add_argument('--eval_folder', type=str, default=None,
                     help='path to frames to evaluate')
 parser.add_argument('--three_scale', action='store_true', default=False)
@@ -409,7 +409,7 @@ def main():
     #  --eval val --dump_assets             dump all images and assets
     #  --eval folder                        just dump all basic images
     #  --eval folder --dump_assets          dump all images and assets
-    if args.eval == 'val':
+    if args.eval == 'val' or args.eval == 'test':
 
         if args.dump_topn:
             validate_topn(val_loader, net, criterion_val, optim, 0, args)
